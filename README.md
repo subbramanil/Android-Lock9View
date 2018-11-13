@@ -11,12 +11,12 @@ An Android grid lock screen view with a callback interface.
 ![Screenshot](art/screenshot.png)
 
 
-## Author ##
+## Author
 
 TakWolf
 Subbramanil
 
-## License ##
+## License
 
 ```
 Copyright 2018 Subbramanil
