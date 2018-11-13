@@ -4,7 +4,7 @@ import android.support.annotation.NonNull;
 
 import java.util.Arrays;
 
-public class LockPresenter
+public class LockScreenPresenter
         implements LockContract.Presenter {
 
     private final LockContract.View mView;
@@ -12,7 +12,7 @@ public class LockPresenter
     private int mNumOfAttempts = 1;
     private int mMaxAttempts = 3;
 
-    LockPresenter(LockContract.View view, LockInteractor interactor) {
+    LockScreenPresenter(LockContract.View view, LockInteractor interactor) {
         this.mView = view;
         this.mInteractor = interactor;
     }

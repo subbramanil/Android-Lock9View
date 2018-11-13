@@ -18,9 +18,9 @@ public class LockScreenActivity extends AppCompatActivity
         implements LockContract.View {
 
     @BindView(R.id.lock_9_view)
-    Lock9View lock9View;
+    Lock9View mLock9View;
     @BindView(R.id.warning_message)
-    TextView warningMessageView;
+    TextView mWarningMessageView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,9 +28,9 @@ public class LockScreenActivity extends AppCompatActivity
         setContentView(R.layout.lock_screen);
         ButterKnife.bind(this);
 
-        LockContract.Presenter mPresenter = new LockPresenter(this, new LockInteractor(getApplicationContext()));
+        LockContract.Presenter mPresenter = new LockScreenPresenter(this, new LockInteractor(getApplicationContext()));
 
-        lock9View.setGestureCallback(mPresenter);
+        mLock9View.setGestureCallback(mPresenter);
     }
 
     @Override
@@ -59,15 +59,15 @@ public class LockScreenActivity extends AppCompatActivity
     @Override
     public void delayUnlock() {
         Toast.makeText(this, "Max. retry attempts reached, wait until 60 seconds to retry", Toast.LENGTH_LONG).show();
-        warningMessageView.setVisibility(View.VISIBLE);
-        lock9View.setVisibility(View.GONE);
+        mWarningMessageView.setVisibility(View.VISIBLE);
+        mLock9View.setVisibility(View.GONE);
 
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                warningMessageView.setVisibility(View.GONE);
-                lock9View.setVisibility(View.VISIBLE);
+                mWarningMessageView.setVisibility(View.GONE);
+                mLock9View.setVisibility(View.VISIBLE);
             }
         }, 60000);
     }

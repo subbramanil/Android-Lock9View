@@ -13,6 +13,7 @@ public class LockInteractor implements LockContract.Interactor {
 
     @Override
     public void storePattern(String pattern) {
+        // FIXME: 11/13/18 Storing the pattern in plain text is dangerous; Encrypt the pattern and store more securely
         mSharedPref.edit().putString("lock_pattern", pattern).apply();
     }
 

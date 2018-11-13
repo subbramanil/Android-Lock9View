@@ -14,16 +14,16 @@ public class LockSetupActivity extends AppCompatActivity
         implements LockContract.View {
 
     @BindView(R.id.lock_9_view)
-    Lock9View lock9View;
+    Lock9View mLock9View;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.lock_screen);
+        setContentView(R.layout.lock_setup_screen);
         ButterKnife.bind(this);
 
         LockContract.Presenter mPresenter = new LockSetupPresenter(this, new LockInteractor(getApplicationContext()));
-        lock9View.setGestureCallback(mPresenter);
+        mLock9View.setGestureCallback(mPresenter);
     }
 
     @Override
