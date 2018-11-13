@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Lock9View</string>
-    <string name="normal_demo">Normal Demo</string>
-    <string name="android_l_style">Android L Style</string>
+    <string name="app_name">Lock9View Demo</string>
+    <string name="lock_setup">Setup Pattern</string>
+    <string name="tryout_pattern">Try Unlock</string>
+    <string name="welcome_message">Welcome to the Home screen</string>
+    <string name="retry_msg">Wait for 1 min to retry</string>
 
 </resources>

@@ -6,14 +6,12 @@
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
-        android:elevation="@dimen/app_bar_elevation"
-        app:title="@string/normal_demo"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+        app:title="@string/lock_setup" />
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -24,16 +22,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            app:lock9_nodeSrc="@drawable/node_normal"
-            app:lock9_nodeOnSrc="@drawable/node_active"
-            app:lock9_nodeOnAnim="@anim/node_on_1"
-            app:lock9_padding="28dp"
-            app:lock9_spacing="28dp"
-            app:lock9_lineColor="@color/blue_light"
-            app:lock9_lineWidth="8dp"
-            app:lock9_autoLink="false"
+            android:layout_margin="24dp"
+            app:lock9_autoLink="true"
             app:lock9_enableVibrate="true"
+            app:lock9_lineColor="@color/blue_light"
+            app:lock9_lineWidth="4dp"
+            app:lock9_nodeAreaExpand="24dp"
+            app:lock9_nodeOnAnim="@anim/node_on_2"
+            app:lock9_nodeOnSrc="@drawable/node_small_active"
+            app:lock9_nodeSize="16dp"
+            app:lock9_nodeSrc="@drawable/node_small_normal"
             app:lock9_vibrateTime="20" />
+
+        <TextView
+            android:id="@+id/warning_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_horizontal|center_vertical"
+            android:text="@string/retry_msg"
+            android:visibility="gone" />
 
     </FrameLayout>
 
