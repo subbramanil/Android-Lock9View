@@ -2,9 +2,9 @@
 <resources>
 
     <string name="app_name">Lock9View Demo</string>
+    <string name="welcome_message">Welcome to the Home screen</string>
     <string name="lock_setup">Setup Pattern</string>
     <string name="tryout_pattern">Try Unlock</string>
-    <string name="welcome_message">Welcome to the Home screen</string>
     <string name="retry_msg">Wait for 1 min to retry</string>
 
 </resources>
