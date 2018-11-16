@@ -34,6 +34,7 @@ public class LockScreenPresenter
 
     @Override
     public void onNodeConnected(@NonNull int[] numbers) {
+        // empty body
     }
 
     @Override
