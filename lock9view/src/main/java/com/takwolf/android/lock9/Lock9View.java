@@ -309,8 +309,9 @@ public class Lock9View extends ViewGroup {
      * 获取给定坐标点的Node，返回null表示当前手指在两个Node之间
      */
     private NodeView getNodeAt(float x, float y) {
+        NodeView node = null;
         for (int n = 0; n < getChildCount(); n++) {
-            NodeView node = (NodeView) getChildAt(n);
+            node = (NodeView) getChildAt(n);
             if (!(x >= node.getLeft() - nodeAreaExpand && x < node.getRight() + nodeAreaExpand)) {
                 continue;
             }
@@ -326,17 +327,17 @@ public class Lock9View extends ViewGroup {
      * 获取两个Node中间的Node，返回null表示没有中间node
      */
     @Nullable
-    private NodeView getNodeBetween(@NonNull NodeView na, @NonNull NodeView nb) {
-        if (na.getNumber() > nb.getNumber()) { // 保证 na 小于 nb
-            NodeView nc = na;
-            na = nb;
-            nb = nc;
+    private NodeView getNodeBetween(@NonNull NodeView firstNode, @NonNull NodeView secondNode) {
+        if (firstNode.getNumber() > secondNode.getNumber()) { // 保证 firstNode 小于 secondNode
+            NodeView swapNode = firstNode;
+            firstNode = secondNode;
+            secondNode = swapNode;
         }
-        if (na.getNumber() % 3 == 1 && nb.getNumber() - na.getNumber() == 2) { // 水平的情况
-            return (NodeView) getChildAt(na.getNumber());
-        } else if (na.getNumber() <= 3 && nb.getNumber() - na.getNumber() == 6) { // 垂直的情况
-            return (NodeView) getChildAt(na.getNumber() + 2);
-        } else if ((na.getNumber() == 1 && nb.getNumber() == 9) || (na.getNumber() == 3 && nb.getNumber() == 7)) { // 倾斜的情况
+        if (firstNode.getNumber() % 3 == 1 && secondNode.getNumber() - firstNode.getNumber() == 2) { // 水平的情况
+            return (NodeView) getChildAt(firstNode.getNumber());
+        } else if (firstNode.getNumber() <= 3 && secondNode.getNumber() - firstNode.getNumber() == 6) { // 垂直的情况
+            return (NodeView) getChildAt(firstNode.getNumber() + 2);
+        } else if ((firstNode.getNumber() == 1 && secondNode.getNumber() == 9) || (firstNode.getNumber() == 3 && secondNode.getNumber() == 7)) { // 倾斜的情况
             return (NodeView) getChildAt(4);
         } else {
             return null;

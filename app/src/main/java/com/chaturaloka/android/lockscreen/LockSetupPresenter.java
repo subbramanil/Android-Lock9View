@@ -28,10 +28,12 @@ public class LockSetupPresenter
 
     @Override
     public void setMaxAttempts(int maxAttempts) {
+        // empty body
     }
 
     @Override
     public void onNodeConnected(@NonNull int[] numbers) {
+        // empty body
     }
 
     @Override
