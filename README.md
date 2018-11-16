@@ -18,7 +18,6 @@ An Android grid lock screen view with a callback interface.
 
 ![Welcome Home Screen](https://s3-us-west-2.amazonaws.com/my-blogresources/screenshots/lock_screen_app/welcome_home_screen.png)
 
-
 ## Author
 
 - TakWolf
@@ -26,7 +25,7 @@ An Android grid lock screen view with a callback interface.
 
 ## License
 
-```
+```license
 Copyright 2018 Subbramanil
 Copyright 2014 TakWolf
 
