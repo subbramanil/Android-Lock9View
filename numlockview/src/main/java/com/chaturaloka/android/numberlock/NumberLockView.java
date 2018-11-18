@@ -10,6 +10,7 @@ import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
@@ -27,12 +28,24 @@ public class NumberLockView extends LinearLayout {
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
-
         }
 
         @Override
         public void afterTextChanged(Editable s) {
             mCurrentSequence.append(s.toString());
+            moveFocusToNextItem(s.hashCode());
+        }
+
+        private void moveFocusToNextItem(int hashCode) {
+            for (int i = 0; i < getChildCount() - 1; i++) {
+                EditText view = (EditText) getChildAt(i);
+                if (view != null) {
+                    if (view.getText().hashCode() == hashCode) {
+                        getChildAt(i + 1).requestFocus();
+                        break;
+                    }
+                }
+            }
         }
     };
     private NumberLockCallback mNumberLockListener;
@@ -116,6 +129,7 @@ public class NumberLockView extends LinearLayout {
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         EditText editText = (EditText) inflater.inflate(R.layout.number_lock_item, this, false);
+        editText.setImeOptions(EditorInfo.IME_ACTION_GO);
         editText.addTextChangedListener(mFinalNumberLockTxtWatcher);
         return editText;
     }
