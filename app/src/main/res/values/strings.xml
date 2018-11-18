@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Lock9View Demo</string>
+    <string name="app_name">Android LockViews</string>
     <string name="welcome_message">Welcome to the Home screen</string>
     <string name="lock_setup">Setup Pattern</string>
     <string name="tryout_pattern">Try Unlock</string>
     <string name="retry_msg">Wait for 1 min to retry</string>
     <string name="number_lock_setup">Setup Number Lock</string>
+    <string name="try_number_lock">Try Number Unlock</string>
 
 </resources>

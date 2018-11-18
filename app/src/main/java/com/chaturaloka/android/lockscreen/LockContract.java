@@ -1,7 +1,5 @@
 package com.chaturaloka.android.lockscreen;
 
-import com.takwolf.android.lock9.Lock9View;
-
 interface LockContract {
 
     interface View {
@@ -19,9 +17,9 @@ interface LockContract {
         void showMinNumberWarning();
     }
 
-    interface Presenter extends Lock9View.GestureCallback,
-            NumberLockActivity.NumberLockCallback {
-        boolean validatePattern(String prevPattern, String currentPattern);
+    interface Presenter {
+        void validatePattern(String pattern);
+        void initializePattern(String pattern);
         void resetAttempts();
         void setMaxAttempts(int maxAttempts);
     }

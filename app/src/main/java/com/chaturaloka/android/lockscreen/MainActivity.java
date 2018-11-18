@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.lock_setup_btn)
     void setupLockPattern() {
-        startActivity(new Intent(this, LockSetupActivity.class));
+        startActivity(new Intent(this, PatternLockActivity.class));
     }
 
     @OnClick(R.id.try_unlock_btn)
@@ -35,12 +35,26 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        startActivity(new Intent(this, LockScreenActivity.class));
+        startActivity(new Intent(this, PatternUnlockActivity.class));
     }
 
     @OnClick(R.id.number_lock_setup_btn)
     void setupNumberLock() {
         startActivity(new Intent(this, NumberLockActivity.class));
+    }
+
+    @OnClick(R.id.try_number_unlock_btn)
+    void tryNumberUnlockPattern() {
+
+        String lockPattern = getSharedPreferences("lock_pref", Context.MODE_PRIVATE)
+                .getString("lock_pattern", "");
+
+        if (lockPattern.isEmpty()) {
+            Toast.makeText(this, "Setup a pattern first", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        startActivity(new Intent(this, NumberUnlockActivity.class));
     }
 
 }

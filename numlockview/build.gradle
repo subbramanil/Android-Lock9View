@@ -1,11 +1,10 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 android {
 
     compileSdkVersion 28
 
     defaultConfig {
-        applicationId 'com.takwolf.android.lock9'
         minSdkVersion 14
         targetSdkVersion 28
         versionCode Integer.valueOf(new Date().format('yyyyMMdd', TimeZone.getTimeZone('UTC')))
@@ -27,12 +26,5 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:design:28.0.0'
-
-    implementation 'com.jakewharton:butterknife:8.8.1'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-
-    implementation project(':lock9view')
-    compile project(path: ':numlockview')
+    compileOnly 'com.android.support:support-annotations:28.0.0'
 }

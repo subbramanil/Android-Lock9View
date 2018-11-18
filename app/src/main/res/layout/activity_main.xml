@@ -44,6 +44,14 @@
             android:text="@string/number_lock_setup"
             android:textAllCaps="false" />
 
+        <Button
+            android:id="@+id/try_number_unlock_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="@string/try_number_lock"
+            android:textAllCaps="false" />
+
     </LinearLayout>
 
 </LinearLayout>

@@ -23,15 +23,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LockScreenActivity"
+            android:name=".PatternUnlockActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".LockSetupActivity"
+            android:name=".PatternLockActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait" />
         <activity android:name=".HomeScreenActivity" />
-        <activity android:name=".NumberLockActivity"></activity>
+        <activity android:name=".NumberLockActivity" />
+        <activity android:name=".NumberUnlockActivity"></activity>
     </application>
 
 </manifest>

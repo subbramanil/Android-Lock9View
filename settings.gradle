@@ -1,1 +1,1 @@
-include ':app', ':lock9view'
+include ':app', ':lock9view', ':numlockview'
