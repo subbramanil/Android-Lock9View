@@ -19,8 +19,11 @@ interface LockContract {
 
     interface Presenter {
         void validatePattern(String pattern);
+
         void initializePattern(String pattern);
+
         void resetAttempts();
+
         void setMaxAttempts(int maxAttempts);
     }
 

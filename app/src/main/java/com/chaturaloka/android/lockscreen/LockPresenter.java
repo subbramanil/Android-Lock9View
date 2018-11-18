@@ -1,7 +1,5 @@
 package com.chaturaloka.android.lockscreen;
 
-import android.util.Log;
-
 public class LockPresenter
         implements LockContract.Presenter {
 
@@ -53,9 +51,6 @@ public class LockPresenter
 
     @Override
     public void initializePattern(String pattern) {
-
-        Log.d("Test", "Received Pattern: " + pattern);
-
         if (mNumOfAttempts == 1) {
             if (pattern.length() < mMinLength) {
                 mView.showMinNumberWarning();

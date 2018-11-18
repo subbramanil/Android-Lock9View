@@ -79,7 +79,7 @@ public class PatternUnlockActivity extends AppCompatActivity
 
     @Override
     public void showMinNumberWarning() {
-        Toast.makeText(this, "Minimum of three dots required", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Minimum of four dots required", Toast.LENGTH_SHORT).show();
     }
 
     @Override

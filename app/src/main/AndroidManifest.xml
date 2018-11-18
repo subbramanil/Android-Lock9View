@@ -32,7 +32,7 @@
             android:screenOrientation="portrait" />
         <activity android:name=".HomeScreenActivity" />
         <activity android:name=".NumberLockActivity" />
-        <activity android:name=".NumberUnlockActivity"></activity>
+        <activity android:name=".NumberUnlockActivity" />
     </application>
 
 </manifest>

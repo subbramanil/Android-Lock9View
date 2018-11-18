@@ -16,17 +16,11 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:padding="8dp"
+        android:gravity="center"
+        android:layout_gravity="center"
         android:orientation="vertical">
-
-        <Button
-            android:id="@+id/try_unlock_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:text="@string/tryout_pattern"
-            android:textAllCaps="false" />
 
         <Button
             android:id="@+id/lock_setup_btn"
@@ -34,6 +28,14 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:text="@string/lock_setup"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/try_unlock_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="@string/tryout_pattern"
             android:textAllCaps="false" />
 
         <Button
