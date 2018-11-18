@@ -38,4 +38,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, LockScreenActivity.class));
     }
 
+    @OnClick(R.id.number_lock_setup_btn)
+    void setupNumberLock() {
+        startActivity(new Intent(this, NumberLockActivity.class));
+    }
+
 }

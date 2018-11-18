@@ -19,7 +19,8 @@ interface LockContract {
         void showMinNumberWarning();
     }
 
-    interface Presenter extends Lock9View.GestureCallback {
+    interface Presenter extends Lock9View.GestureCallback,
+            NumberLockActivity.NumberLockCallback {
         boolean validatePattern(String prevPattern, String currentPattern);
         void resetAttempts();
         void setMaxAttempts(int maxAttempts);

@@ -58,4 +58,26 @@ public class LockSetupPresenter
             }
         }
     }
+
+    @Override
+    public void onSequenceComplete(String sequence) {
+        if (mNumOfAttempts == 0) {
+            if (sequence.length() < 6) {
+                mView.showMinNumberWarning();
+                mNumOfAttempts = 0;
+                return;
+            }
+            mNumOfAttempts++;
+            mView.showInfo();
+            mInteractor.storePattern(sequence);
+        } else {
+            mNumOfAttempts = 0;
+            if (validatePattern(mInteractor.retrievePattern(), sequence)) {
+                mView.showSuccess();
+            } else {
+                mInteractor.resetPattern();
+                mView.showMismatchingPatternFailure();
+            }
+        }
+    }
 }

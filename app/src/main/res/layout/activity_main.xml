@@ -36,6 +36,14 @@
             android:text="@string/lock_setup"
             android:textAllCaps="false" />
 
+        <Button
+            android:id="@+id/number_lock_setup_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="@string/number_lock_setup"
+            android:textAllCaps="false" />
+
     </LinearLayout>
 
 </LinearLayout>

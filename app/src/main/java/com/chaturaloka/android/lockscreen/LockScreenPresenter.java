@@ -57,4 +57,9 @@ public class LockScreenPresenter
             mView.delayUnlock();
         }
     }
+
+    @Override
+    public void onSequenceComplete(String sequence) {
+        // empty body
+    }
 }

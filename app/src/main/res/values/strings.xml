@@ -6,5 +6,6 @@
     <string name="lock_setup">Setup Pattern</string>
     <string name="tryout_pattern">Try Unlock</string>
     <string name="retry_msg">Wait for 1 min to retry</string>
+    <string name="number_lock_setup">Setup Number Lock</string>
 
 </resources>
