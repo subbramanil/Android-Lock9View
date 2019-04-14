@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'org.sonarqube'
 
 android {
 
@@ -21,6 +22,15 @@ android {
 
     lintOptions {
         abortOnError false
+    }
+
+    sonarqube {
+        properties {
+            property "sonar.projectKey", "subbramanil_Android-Lock9View"
+            property "sonar.organization", "subbramanil-github"
+            property "sonar.host.url", "https://sonarcloud.io"
+            property "sonar.login", "656957ef3dc21064c598bc4dfff645f85a976d90"
+        }
     }
 
 }

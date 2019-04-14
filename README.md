@@ -4,6 +4,8 @@ Credits to [original repo](https://github.com/TakWolf/Android-Lock9View)
 
 [![License](https://img.shields.io/github/license/TakWolf/Android-Lock9View.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=subbramanil_Android-Lock9View&metric=alert_status)](https://sonarcloud.io/dashboard?id=subbramanil_Android-Lock9View)
+
 An Android grid lock screen view with a callback interface.
 
 ## ScreenShots
