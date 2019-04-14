@@ -10,31 +10,48 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
-        android:elevation="@dimen/app_bar_elevation"
         app:title="@string/app_name"
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:padding="8dp"
+        android:gravity="center"
+        android:layout_gravity="center"
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/btn_normal"
+            android:id="@+id/lock_setup_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="@string/normal_demo"
+            android:text="@string/lock_setup"
             android:textAllCaps="false" />
 
         <Button
-            android:id="@+id/btn_l_style"
+            android:id="@+id/try_unlock_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="@string/android_l_style"
+            android:text="@string/tryout_pattern"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/number_lock_setup_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="@string/number_lock_setup"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/try_number_unlock_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="@string/try_number_lock"
             android:textAllCaps="false" />
 
     </LinearLayout>

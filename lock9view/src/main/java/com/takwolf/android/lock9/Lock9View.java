@@ -41,8 +41,6 @@ public class Lock9View extends ViewGroup {
     private float nodeSize; // 节点大小，如果不为0，则忽略内边距和间距属性
     private float nodeAreaExpand; // 对节点的触摸区域进行扩展
     private int nodeOnAnim; // 节点点亮时的动画
-    private int lineColor;
-    private float lineWidth;
     private float padding; // 内边距
     private float spacing; // 节点间隔距离
 
@@ -67,18 +65,6 @@ public class Lock9View extends ViewGroup {
      * 结果回调监听器接口
      */
     private GestureCallback callback;
-
-    public interface GestureCallback {
-
-        void onNodeConnected(@NonNull int[] numbers);
-
-        void onGestureFinished(@NonNull int[] numbers);
-
-    }
-
-    public void setGestureCallback(@Nullable GestureCallback callback) {
-        this.callback = callback;
-    }
 
     /**
      * 构造函数
@@ -105,6 +91,10 @@ public class Lock9View extends ViewGroup {
         init(context, attrs, defStyleAttr, defStyleRes);
     }
 
+    public void setGestureCallback(@Nullable GestureCallback callback) {
+        this.callback = callback;
+    }
+
     /**
      * 初始化
      */
@@ -117,8 +107,8 @@ public class Lock9View extends ViewGroup {
         nodeSize = a.getDimension(R.styleable.Lock9View_lock9_nodeSize, 0);
         nodeAreaExpand = a.getDimension(R.styleable.Lock9View_lock9_nodeAreaExpand, 0);
         nodeOnAnim = a.getResourceId(R.styleable.Lock9View_lock9_nodeOnAnim, 0);
-        lineColor = a.getColor(R.styleable.Lock9View_lock9_lineColor, Color.argb(0, 0, 0, 0));
-        lineWidth = a.getDimension(R.styleable.Lock9View_lock9_lineWidth, 0);
+        int lineColor = a.getColor(R.styleable.Lock9View_lock9_lineColor, Color.argb(0, 0, 0, 0));
+        float lineWidth = a.getDimension(R.styleable.Lock9View_lock9_lineWidth, 0);
         padding = a.getDimension(R.styleable.Lock9View_lock9_padding, 0);
         spacing = a.getDimension(R.styleable.Lock9View_lock9_spacing, 0);
 
@@ -226,16 +216,14 @@ public class Lock9View extends ViewGroup {
                 y = event.getY();
                 NodeView currentNode = getNodeAt(x, y);
                 if (currentNode != null && !currentNode.isHighLighted()) { // 碰触了新的未点亮节点
-                    if (nodeList.size() > 0) { // 之前有点亮的节点
-                        if (autoLink) { // 开启了中间节点自动连接
-                            NodeView lastNode = nodeList.get(nodeList.size() - 1);
-                            NodeView middleNode = getNodeBetween(lastNode, currentNode);
-                            if (middleNode != null && !middleNode.isHighLighted()) { // 存在中间节点没点亮
-                                // 点亮中间节点
-                                middleNode.setHighLighted(true, true);
-                                nodeList.add(middleNode);
-                                handleOnNodeConnectedCallback();
-                            }
+                    if (nodeList.size() > 0 && autoLink) { // 之前有点亮的节点, 开启了中间节点自动连接
+                        NodeView lastNode = nodeList.get(nodeList.size() - 1);
+                        NodeView middleNode = getNodeBetween(lastNode, currentNode);
+                        if (middleNode != null && !middleNode.isHighLighted()) { // 存在中间节点没点亮
+                            // 点亮中间节点
+                            middleNode.setHighLighted(true, true);
+                            nodeList.add(middleNode);
+                            handleOnNodeConnectedCallback();
                         }
                     }
                     // 点亮当前触摸节点
@@ -262,6 +250,8 @@ public class Lock9View extends ViewGroup {
                     invalidate();
                 }
                 break;
+            default:
+                // do nothing
         }
         return true;
     }
@@ -319,8 +309,9 @@ public class Lock9View extends ViewGroup {
      * 获取给定坐标点的Node，返回null表示当前手指在两个Node之间
      */
     private NodeView getNodeAt(float x, float y) {
+        NodeView node = null;
         for (int n = 0; n < getChildCount(); n++) {
-            NodeView node = (NodeView) getChildAt(n);
+            node = (NodeView) getChildAt(n);
             if (!(x >= node.getLeft() - nodeAreaExpand && x < node.getRight() + nodeAreaExpand)) {
                 continue;
             }
@@ -336,21 +327,29 @@ public class Lock9View extends ViewGroup {
      * 获取两个Node中间的Node，返回null表示没有中间node
      */
     @Nullable
-    private NodeView getNodeBetween(@NonNull NodeView na, @NonNull NodeView nb) {
-        if (na.getNumber() > nb.getNumber()) { // 保证 na 小于 nb
-            NodeView nc = na;
-            na = nb;
-            nb = nc;
+    private NodeView getNodeBetween(@NonNull NodeView firstNode, @NonNull NodeView secondNode) {
+        if (firstNode.getNumber() > secondNode.getNumber()) { // 保证 firstNode 小于 secondNode
+            NodeView swapNode = firstNode;
+            firstNode = secondNode;
+            secondNode = swapNode;
         }
-        if (na.getNumber() % 3 == 1 && nb.getNumber() - na.getNumber() == 2) { // 水平的情况
-            return (NodeView) getChildAt(na.getNumber());
-        } else if (na.getNumber() <= 3 && nb.getNumber() - na.getNumber() == 6) { // 垂直的情况
-            return (NodeView) getChildAt(na.getNumber() + 2);
-        } else if ((na.getNumber() == 1 && nb.getNumber() == 9) || (na.getNumber() == 3 && nb.getNumber() == 7)) { // 倾斜的情况
+        if (firstNode.getNumber() % 3 == 1 && secondNode.getNumber() - firstNode.getNumber() == 2) { // 水平的情况
+            return (NodeView) getChildAt(firstNode.getNumber());
+        } else if (firstNode.getNumber() <= 3 && secondNode.getNumber() - firstNode.getNumber() == 6) { // 垂直的情况
+            return (NodeView) getChildAt(firstNode.getNumber() + 2);
+        } else if ((firstNode.getNumber() == 1 && secondNode.getNumber() == 9) || (firstNode.getNumber() == 3 && secondNode.getNumber() == 7)) { // 倾斜的情况
             return (NodeView) getChildAt(4);
         } else {
             return null;
         }
+    }
+
+    public interface GestureCallback {
+
+        void onNodeConnected(@NonNull int[] numbers);
+
+        void onGestureFinished(@NonNull int[] numbers);
+
     }
 
     /**
@@ -368,11 +367,11 @@ public class Lock9View extends ViewGroup {
             setBackgroundDrawable(nodeSrc);
         }
 
-        boolean isHighLighted() {
+        private boolean isHighLighted() {
             return highLighted;
         }
 
-        void setHighLighted(boolean highLighted, boolean isMid) {
+        private void setHighLighted(boolean highLighted, boolean isMid) {
             if (this.highLighted != highLighted) {
                 this.highLighted = highLighted;
                 if (nodeOnSrc != null) { // 没有设置高亮图片则不变化
@@ -386,23 +385,21 @@ public class Lock9View extends ViewGroup {
                         clearAnimation();
                     }
                 }
-                if (enableVibrate && !isMid) { // 震动
-                    if (highLighted) {
-                        vibrator.vibrate(vibrateTime);
-                    }
+                if (enableVibrate && !isMid && highLighted) { // 震动
+                    vibrator.vibrate(vibrateTime);
                 }
             }
         }
 
-        int getCenterX() {
+        private int getCenterX() {
             return (getLeft() + getRight()) / 2;
         }
 
-        int getCenterY() {
+        private int getCenterY() {
             return (getTop() + getBottom()) / 2;
         }
 
-        int getNumber() {
+        private int getNumber() {
             return number;
         }
 
