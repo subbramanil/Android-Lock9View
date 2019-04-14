@@ -18,6 +18,10 @@ An Android grid lock screen view with a callback interface.
 
 ![Welcome Home Screen](https://s3-us-west-2.amazonaws.com/my-blogresources/screenshots/lock_screen_app/welcome_home_screen.png)
 
+## Note
+
+- The passcodes are stored in preferences for the simplicity of implementation. Consider encrypting it for better security.
+
 ## Author
 
 - TakWolf
