@@ -14,13 +14,13 @@ An Android grid lock screen view with a callback interface.
 
 ![Demo Start Screen](https://github.com/subbramanil/Android-Lock9View/blob/develop/screenshots/lock_screen_demo_start.png)
 
-![Lock Setup Screen](https://github.com/subbramanil/Android-Lock9View/blob/develop/screenshots/lock_screen_app/lock_setup_screen.png)
+![Lock Setup Screen](https://github.com/subbramanil/Android-Lock9View/blob/develop/screenshots/lock_setup_screen.png)
 
-![Unlock Screen](https://github.com/subbramanil/Android-Lock9View/blob/develop/screenshots/lock_screen_app/unlock_lock_screen.png)
+![Unlock Screen](https://github.com/subbramanil/Android-Lock9View/blob/develop/screenshots/unlock_lock_screen.png)
 
-![Max. Attempts Reached](https://github.com/subbramanil/Android-Lock9View/blob/develop/screenshots/lock_screen_app/max_attempts_reached.png)
+![Max. Attempts Reached](https://github.com/subbramanil/Android-Lock9View/blob/develop/screenshots/max_attempts_reached.png)
 
-![Welcome Home Screen](https://github.com/subbramanil/Android-Lock9View/blob/develop/screenshots/lock_screen_app/welcome_home_screen.png)
+![Welcome Home Screen](https://github.com/subbramanil/Android-Lock9View/blob/develop/screenshots/welcome_home_screen.png)
 
 ## Note
 
